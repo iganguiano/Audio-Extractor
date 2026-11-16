@@ -148,6 +148,15 @@ a:hover { text-decoration: underline; }
   filter: drop-shadow(18px 30px 30px var(--shadow)); transform: rotate(12deg);
 }
 .tile-hero .copy { max-width: 52%; display: grid; gap: 10px; }
+.tile.photo { padding: 0; gap: 0; grid-template-rows: auto 1fr; }
+.tile.photo .copy { padding: 36px 32px 24px; display: grid; gap: 10px; }
+.tile.photo img { display: block; width: 100%; height: 100%; min-height: 240px; max-height: 340px; object-fit: cover; }
+.tile.photo.light, .band:not(.alt) .tile.photo.light { background: #ffffff; color: #1d1d1f; }
+.tile.photo.light p, .tile.photo.light .label { color: #6e6e73; }
+.tile.photo.light img { object-fit: contain; padding: 0 16px 16px; }
+.tile.photo.dark, .band:not(.alt) .tile.photo.dark { background: #0b0b0c; color: #f5f5f7; }
+.tile.photo.dark p, .tile.photo.dark .label { color: #a1a1a6; }
+.tile.photo.dark p strong { color: #f5f5f7; }
 .grad-ink { background: linear-gradient(90deg, #3a7bd5, #6f86d6 50%, #8e7cc3); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .icon { width: 40px; height: 40px; color: var(--ink); }
 @media (max-width: 860px) {
@@ -181,6 +190,28 @@ a:hover { text-decoration: underline; }
 .mat-facts div { display: grid; gap: 6px; border-top: 1px solid #333336; padding-top: 20px; }
 .mat-facts .v { font-size: 40px; font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: var(--stage-ink); }
 .mat-facts .k { color: var(--stage-muted); font-size: 15px; }
+.edge-shot { margin: 20px 0 0; border-radius: 28px; overflow: hidden; background: #000; display: grid; }
+.edge-shot img { display: block; width: 100%; max-width: 900px; margin: 0 auto; height: auto; }
+.edge-shot figcaption { padding: 0 32px 32px; color: var(--stage-muted); font-size: 17px; max-width: 60ch; }
+.edge-shot figcaption strong { color: var(--stage-ink); font-weight: 600; }
+
+/* Finishes */
+.finishes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+.finish { display: grid; gap: 14px; justify-items: center; text-align: center; margin: 0; }
+.finish .swatch-img { width: 100%; aspect-ratio: 3 / 4; border-radius: 22px; overflow: hidden; background: #0b0b0c; display: grid; place-items: center; }
+.finish .swatch-img.light { background: #ffffff; }
+.finish .swatch-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.finish .swatch-img.light img, .finish .swatch-img.contain img { object-fit: contain; padding: 10%; }
+.finish .dot { width: 14px; height: 14px; border-radius: 50%; box-shadow: inset 0 0 0 1px rgba(0,0,0,.15); }
+.finish figcaption { display: grid; justify-items: center; gap: 8px; font-size: 15px; font-weight: 600; }
+@media (max-width: 860px) { .finishes { grid-template-columns: repeat(3, 1fr); gap: 14px; } }
+@media (max-width: 520px) { .finishes { grid-template-columns: 1fr 1fr; } }
+
+.compare-shot { max-width: 760px; margin: 0 auto 20px; border-radius: 28px; overflow: hidden; background: #1d1d1f; }
+.compare-shot img { display: block; width: 100%; height: auto; }
+.dims-shot { margin: 0 0 32px; border-radius: 28px; overflow: hidden; background: #1d1d1f; }
+.dims-shot img { display: block; width: 100%; max-height: 460px; object-fit: cover; }
+
 @media (max-width: 720px) { .macro { aspect-ratio: 4 / 5; background-size: 420%; } .mat-facts { grid-template-columns: 1fr; gap: 20px; } }
 
 /* Capacity */
@@ -273,6 +304,7 @@ footer .wrap { padding-block: 24px 32px; display: grid; gap: 16px; }
       <div class="ln-links">
         <a href="#highlights">Highlights</a>
         <a href="#material">Material</a>
+        <a href="#finishes">Finishes</a>
         <a href="#capacity">Capacity</a>
         <a href="#specs">Tech Specs</a>
       </div>
@@ -326,20 +358,42 @@ footer .wrap { padding-block: 24px 32px; display: grid; gap: 16px; }
           <span class="big num grad-ink">1–12</span>
           <p>Cards. The band stretches to fit.</p>
         </article>
-        <article class="tile span-3">
-          <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 5l13 5v9c0 8.5-5.6 13.6-13 16-7.4-2.4-13-7.5-13-16v-9z"/><path d="M14 20l4.5 4.5L27 16"/></svg>
-          <h3>RFID blocking, built in.</h3>
-          <p>The plates shield contactless cards from stray scans at 13.56 MHz. Push a card out and tap to pay as usual.</p>
+        <article class="tile span-3 photo light">
+          <div class="copy">
+            <span class="label">Security</span>
+            <h3>RFID blocking, built in.</h3>
+            <p>The metal plates shield contactless cards from stray scans at 13.56 MHz.</p>
+          </div>
+          <img src="img/rfid.jpg" alt="Green K1 wallet loaded with cards and cash, surrounded by signal rings" loading="lazy">
         </article>
-        <article class="tile span-3">
-          <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M13 34c0-6 2-9 2-14V9a2.5 2.5 0 0 1 5 0v9"/><path d="M20 18v-2a2.5 2.5 0 0 1 5 0v4M25 18a2.5 2.5 0 0 1 5 0v6c0 6-3 10-8 10"/></svg>
-          <h3>One thumb. Every card.</h3>
-          <p>Push through the cut-out and your stack rises and fans, so the card you want is right there.</p>
+        <article class="tile span-3 photo dark">
+          <div class="copy">
+            <span class="label">Carry</span>
+            <h3>Made for a suit pocket.</h3>
+            <p><strong>Slides into a breast pocket</strong> without a bulge, and comes out in one motion.</p>
+          </div>
+          <img src="img/pocket.jpg" alt="Hand sliding a green K1 wallet into a suit jacket pocket" loading="lazy">
+        </article>
+        <article class="tile span-3 photo light">
+          <div class="copy">
+            <span class="label">Profile</span>
+            <h3>Thin enough to pinch.</h3>
+            <p>A full stack of cards and cash, held between two fingers.</p>
+          </div>
+          <img src="img/pinch.jpg" alt="Side view of a loaded K1 wallet held between thumb and finger" loading="lazy">
+        </article>
+        <article class="tile span-3 photo dark">
+          <div class="copy">
+            <span class="label">Cash clip</span>
+            <h3>Bills ride on the back.</h3>
+            <p>A spring steel clip and elastic band hold folded notes flat.</p>
+          </div>
+          <img src="img/strap.jpg" alt="Close-up of the black cash clip and elastic band on a gold K1 wallet" loading="lazy">
         </article>
         <article class="tile span-2">
-          <span class="label">Cash strap</span>
-          <h3>Bills ride on the back.</h3>
-          <p>Or swap in the included money clip.</p>
+          <svg class="icon" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M13 34c0-6 2-9 2-14V9a2.5 2.5 0 0 1 5 0v9"/><path d="M20 18v-2a2.5 2.5 0 0 1 5 0v4M25 18a2.5 2.5 0 0 1 5 0v6c0 6-3 10-8 10"/></svg>
+          <h3>One thumb. Every card.</h3>
+          <p>Push through the cut-out and the stack fans out.</p>
         </article>
         <article class="tile span-2">
           <span class="label">Hardware</span>
@@ -359,16 +413,52 @@ footer .wrap { padding-block: 24px 32px; display: grid; gap: 16px; }
     <div class="wrap">
       <div class="band-head">
         <span class="kicker">Material</span>
-        <h2>Woven for strength. Cut for your pocket.</h2>
-        <p>Each plate is real 3K twill carbon fiber, not a printed wrap. Stiffer than aluminum, at a fraction of the weight.</p>
+        <h2>Aviation aluminum. Or carbon fiber.</h2>
+        <p>The frame is CNC-machined from aviation-grade aluminum. Choose the carbon finish for real 3K twill plates on top.</p>
       </div>
       <figure class="macro" style="margin: 0;">
         <figcaption><strong>3K twill weave.</strong> Three thousand filaments per tow, woven over two and under two for its signature diagonal pattern.</figcaption>
       </figure>
+      <figure class="edge-shot">
+        <img src="img/edge.jpg" alt="Side profile of the K1 showing its CNC-chamfered aluminum plates" loading="lazy">
+        <figcaption><strong>Chamfered on both sides.</strong> Double-sided CNC cutting leaves soft edges that won't catch your hands or scratch your cards.</figcaption>
+      </figure>
       <div class="mat-facts">
-        <div><span class="v">3K</span><span class="k">Filaments per carbon tow</span></div>
-        <div><span class="v">6061</span><span class="k">Anodized aluminum frame and strap</span></div>
-        <div><span class="v">2 × 2</span><span class="k">Twill weave pattern</span></div>
+        <div><span class="v">Aviation</span><span class="k">Grade aluminum frame, anodized</span></div>
+        <div><span class="v">3K</span><span class="k">Carbon fiber plates on the carbon finish</span></div>
+        <div><span class="v">CNC</span><span class="k">Double-sided chamfered edges</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="finishes">
+    <div class="wrap">
+      <div class="band-head">
+        <span class="kicker">Finishes</span>
+        <h2>Pick your finish.</h2>
+        <p>Every finish shares the same frame, clip and band.</p>
+      </div>
+      <div class="finishes">
+        <figure class="finish">
+          <div class="swatch-img contain" style="background: #1a1b1e;"><img src="wallet.png" alt="Carbon fiber K1 wallet" loading="lazy"></div>
+          <figcaption><span class="dot" style="background: #2a2a2d;"></span>Carbon Fiber</figcaption>
+        </figure>
+        <figure class="finish">
+          <div class="swatch-img light"><img src="img/gray.jpg" alt="Graphite gray K1 wallet" loading="lazy"></div>
+          <figcaption><span class="dot" style="background: #6b6d70;"></span>Graphite</figcaption>
+        </figure>
+        <figure class="finish">
+          <div class="swatch-img"><img src="img/blue.jpg" alt="Navy blue K1 wallet" loading="lazy"></div>
+          <figcaption><span class="dot" style="background: #1f4f86;"></span>Navy</figcaption>
+        </figure>
+        <figure class="finish">
+          <div class="swatch-img"><img src="img/pocket.jpg" alt="Forest green K1 wallet in a jacket pocket" loading="lazy" style="object-position: 46% 50%;"></div>
+          <figcaption><span class="dot" style="background: #56683f;"></span>Forest Green</figcaption>
+        </figure>
+        <figure class="finish">
+          <div class="swatch-img"><img src="img/strap.jpg" alt="Champagne gold K1 wallet" loading="lazy" style="object-position: 20% 50%;"></div>
+          <figcaption><span class="dot" style="background: #d9b48f;"></span>Champagne Gold</figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -380,6 +470,9 @@ footer .wrap { padding-block: 24px 32px; display: grid; gap: 16px; }
         <h2>Fewer millimetres. Same cards.</h2>
         <p>A standard ID-1 card is 0.76 mm thick. Choose how many you carry.</p>
       </div>
+      <figure class="compare-shot" style="margin-top: 0;">
+        <img src="img/vs-bifold.jpg" alt="A loaded K1 wallet beside a bulging leather bifold holding the same cards" loading="lazy">
+      </figure>
       <div class="cap">
         <div class="cap-top">
           <label for="cards">Cards you carry</label>
@@ -420,11 +513,14 @@ footer .wrap { padding-block: 24px 32px; display: grid; gap: 16px; }
       <div class="band-head">
         <h2>Tech Specs</h2>
       </div>
+      <figure class="dims-shot">
+        <img src="img/dims.jpg" alt="Gold K1 wallet with dimension callouts: 8.6 cm long and 5.4 cm wide" loading="lazy">
+      </figure>
       <div class="specs">
         <div class="spec">
           <h3>Size and Weight</h3>
           <dl>
-            <div><dt>Dimensions</dt><dd>88 × 56 × 6.5 mm</dd></div>
+            <div><dt>Dimensions</dt><dd>86 × 54 mm (3.39 × 2.22 in), 6.5 mm thick empty</dd></div>
             <div><dt>Weight</dt><dd>48 g (1.7 oz)</dd></div>
           </dl>
         </div>
@@ -439,8 +535,9 @@ footer .wrap { padding-block: 24px 32px; display: grid; gap: 16px; }
         <div class="spec">
           <h3>Materials</h3>
           <dl>
-            <div><dt>Plates</dt><dd>3K twill carbon fiber, matte finish</dd></div>
-            <div><dt>Frame and strap</dt><dd>Anodized 6061 aluminum, black</dd></div>
+            <div><dt>Frame</dt><dd>Aviation-grade aluminum, CNC-machined, double-sided chamfer</dd></div>
+            <div><dt>Plates</dt><dd>Anodized aluminum, or 3K twill carbon fiber on the carbon finish</dd></div>
+            <div><dt>Finishes</dt><dd>Carbon Fiber, Graphite, Navy, Forest Green, Champagne Gold</dd></div>
             <div><dt>Hardware</dt><dd>10 stainless steel hex screws</dd></div>
             <div><dt>Band</dt><dd>Woven nylon-spandex elastic</dd></div>
           </dl>
