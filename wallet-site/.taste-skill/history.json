@@ -1,0 +1,28 @@
+{
+ "palettes": [
+  "white-signal-red"
+ ],
+ "types": [
+  "instrument-serif"
+ ],
+ "dealt": [
+  "archivo",
+  "bricolage",
+  "manrope",
+  "instrument-serif",
+  "archivo",
+  "fraunces"
+ ],
+ "moments": [
+  {
+   "id": "photo-chapters",
+   "at": "2026-11-24T06:18:46.839Z",
+   "seed": "2ab5c4af"
+  },
+  {
+   "id": "word-highlight",
+   "at": "2026-11-24T06:24:25.764Z",
+   "seed": "4528af66"
+  }
+ ]
+}
